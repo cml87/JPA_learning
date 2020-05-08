@@ -1,0 +1,5 @@
+.idea/
+target/
+assembly.xml
+java-persistence-api-22-m1.iml
+readme.md

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.pluralsight.java-persistence-api-22</groupId>
+  <artifactId>java-persistence-api-22-m1</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <name>Java Persistence API :: java-persistence-api-22-m1 :: Introduction</name>
+
+
+  <properties>
+    <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <version.java>11</version.java>   <!-- Java SE 11 !  .1.8 is Java SE 8-->
+    <version.javaee>8.0.1 </version.javaee>  <!-- Version of javaee-web-api. Compatible with Java EE 8. https://javadoc.io/doc/javax/javaee-web-api/latest/index.html-->
+    <!-- Plugins -->
+    <version.assembly.plugin>3.2.0</version.assembly.plugin> <!--latest, https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin-->
+    <version.compiler.plugin>3.8.1</version.compiler.plugin> <!--latest, https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin-->
+    <version.dependency.plugin>3.1.2</version.dependency.plugin> <!--latest, https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin-->
+    <version.war.plugin>3.2.3</version.war.plugin> <!--https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-war-plugin-->
+
+    <!--https://mvnrepository.com/artifact/org.wildfly.plugins/wildfly-maven-plugin/2.0.2.Final-->
+    <version.wildfly.plugin>2.0.2.Final</version.wildfly.plugin>
+
+    <!--The latest version is from 2013. https://mvnrepository.com/artifact/javax/javaee-endorsed-api-->
+    <version.endorsed.plugin>7.0</version.endorsed.plugin>
+
+    <version.exec.plugin>1.6.0</version.exec.plugin>
+
+    <version.hibernate.plugin>5.4.14.Final</version.hibernate.plugin>
+
+    <version.eclipselink>3.0.0-M1</version.eclipselink>  <!-- April 2020 -->
+
+    <version.h2>1.4.200</version.h2>
+
+    <version.junit>4.13</version.junit>
+    <version.arquillian>1.6.0.Final</version.arquillian>  <!-- 2019 https://mvnrepository.com/artifact/org.arquillian.universe/arquillian-junit/1.5.0.0-->
+    <version.arquillian.wildfly>2.2.0.Final</version.arquillian.wildfly>
+    <version.shrinkwrap>1.2.6</version.shrinkwrap>
+
+    <version.surefire.plugin>2.19.1</version.surefire.plugin>
+
+    <version.maven.help.plugin>3.2.0</version.maven.help.plugin>
+
+    <version.maven.jar.plugin>3.2.0</version.maven.jar.plugin>
+
+    <version.maven.javadoc.plugin>3.2.0</version.maven.javadoc.plugin>
+
+  </properties>
+
+
+  <dependencies>
+
+
+
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>eclipselink</artifactId>
+      <version>2.7.6</version>
+    </dependency>
+
+    <!--       <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>org.eclipse.persistence.jpa</artifactId>
+                <version>${version.eclipselink}</version>
+            </dependency>-->
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${version.h2}</version>
+    </dependency>
+
+    <!-- Test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.junit}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${version.compiler.plugin}</version>
+        <inherited>true</inherited>
+        <configuration>
+          <source>${version.java}</source>
+          <target>${version.java}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+
+</project>
