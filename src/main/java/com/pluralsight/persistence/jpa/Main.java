@@ -5,50 +5,54 @@ import com.pluralsight.persistence.jpa.Book;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.sql.SQLException;
 
-/**
- * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
- */
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        System.out.println("\n\n>>> Executing : " + com.pluralsight.persistence.jpa.Main.class.toString() + " <<<\n");
+        System.out.println("\n\n>>> Executing : " + Main.class.toString() + " <<<\n");
 
-        persistBook(new com.pluralsight.persistence.jpa.Book(5000L, "H2G2", "Best IT Scifi Book", 12.5f, "1234-5678-5678", 247));
+        BookService service = new BookService();
+
+        // Creates and persists a Book
+        // Returns a reference to a managed book entity
+        Book book = service.createBook(4044L, "H2G2", "Scifi Book", 12.5f, "1234-5678-5678", 247);
+
+        // This is another managed entity we create but without storing the reference to it.
+        service.createBook(3333L, "H2G2", "Scifi Book", 12.5f, "1234-5678-5678", 247);
 
 
-        com.pluralsight.persistence.jpa.Book book = findBook(5000L);
+        System.out.println("Book Persisted : " + book);
 
-        System.out.println("# " + book);
+        // Finds the book
+        Book bookFound = service.findBook(4044L);
 
-        em.close();
+        // Show that findBook() returns a reference to a managed entity
+        if (bookFound == book)
+            System.out.println("# ... pointers to the same object ...");
 
-    }
+        System.out.println("Book Found     : " + bookFound);
 
-    /**
-     * Gets an entity manager
-     */
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("module01-persistence-unit");
-    private static EntityManager em = emf.createEntityManager();
+        // Raises the price of the book. 4044 is the id of the above managed entity
+        service.raiseUnitCost(4044L, 12.5F);
+        System.out.println("Book Updated   : " + book);
 
-    /**
-     * Persists the book to the database
-     */
-    private static void persistBook(com.pluralsight.persistence.jpa.Book book) {
-        em.getTransaction().begin();
-        em.persist(book);
-        em.getTransaction().commit();
-    }
+        // Removes the book. More accurate: remove the book from the database and the persistence context
+        service.removeBook(4044L);
+        System.out.println("Book Removed");
 
-    /**
-     * Finds the book from the database
-     */
-    private static com.pluralsight.persistence.jpa.Book findBook(Long id) {
-        return em.find(Book.class, id);
+        // Finds the book
+        bookFound = service.findBook(4044L);
+        System.out.println("Book Not Found in the DB: " + bookFound);
+
+        // Show that object still exist !
+        System.out.println("The book object still exists, though: " + book);
+
     }
 }
+
+
 
 
