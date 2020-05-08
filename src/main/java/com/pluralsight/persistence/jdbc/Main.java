@@ -1,6 +1,6 @@
-package com.pluralsight.persistence.module01.demo01;
+package com.pluralsight.persistence.jdbc;
 
-import com.pluralsight.persistence.module01.demo02.Book;
+import com.pluralsight.persistence.jdbc.Book;
 
 import java.sql.*;
 
@@ -15,7 +15,7 @@ public class Main {
 
     System.out.println("\n\n>>> Executing : " + Main.class.toString() + " <<<\n");
 
-    persistBook(new Book(5000L, "H2G2", "Best IT Scifi Book", 12.5f, "1234-5678-5678", 247));
+    persistBook(new Book(5001L, "H2G2", "Best IT Scifi Book", 12.5f, "1234-5678-5678", 247));
 
     Book book = findBook(5000L);
 

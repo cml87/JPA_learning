@@ -1,4 +1,4 @@
-package com.pluralsight.persistence.module01.demo02;
+package com.pluralsight.persistence.jpa;
 
 import org.junit.After;
 import org.junit.Before;

@@ -7,15 +7,20 @@
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
-        <class>com.pluralsight.persistence.module01.demo02.Book</class>
+        <class>com.pluralsight.persistence.jpa.Book</class>
 
         <properties>
 
+            <!--________________________________________-->
+            <!--   javax.persistence (JPA standard)     -->
+            <!--________________________________________-->
 
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 
+            <!--If the property javax.persistence.schema-generation.scripts.action is specified then
+            the corresponding files for the create and drop ddl scripts need to be specified following-->
             <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
-
+            <!--This fil will contain all the create statements-->
             <property name="javax.persistence.schema-generation.scripts.create-target" value="module01-create.ddl"/>
             <property name="javax.persistence.schema-generation.scripts.drop-target" value="module01-drop.ddl"/>
 
@@ -23,6 +28,10 @@
             <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:module01-db"/>&ndash;&gt; -->
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/cdbookstoreDB"/>
 
+
+            <!--________________________________________-->
+            <!--         JPA vendor properties          -->
+            <!--________________________________________-->
             <property name="eclipselink.logging.level" value="INFO"/>
 
 
@@ -37,12 +46,16 @@
 
             <!-- EclipseLink should create the database schema automatically -->
             <!--that the database scheme will be automatically dropped and created-->
-            <!--            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />-->
+            <!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />-->
 
             <!-- Two files will get generated 'createDDL.jdbc' and 'dropDDL.jdbc-->
-            <!--            <property name="eclipselink.ddl-generation.output-mode" value="both" />  &lt;!&ndash;value="database"&ndash;&gt;-->
+            <!-- <property name="eclipselink.ddl-generation.output-mode" value="both" />  &lt;!&ndash;value="database"&ndash;&gt;-->
 
         </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="another persistance unit">
 
     </persistence-unit>
 </persistence>

@@ -1,21 +1,16 @@
-package com.pluralsight.persistence.module01.demo02;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+package com.pluralsight.persistence.jdbc;
 
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
  *         --
  */
-@Entity
 public class Book {
 
   // ======================================
   // =             Attributes             =
   // ======================================
 
-  @Id
   private Long id;
   private String title;
   private String description;
