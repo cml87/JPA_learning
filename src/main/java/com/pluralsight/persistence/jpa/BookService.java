@@ -59,6 +59,8 @@ public class BookService {
         }
     }
 
+    // returns the in-memory state of a managed entity having the supplied id. Doesn't return the actual database
+    // record of the entity with such id.
     public Book findBook(Long id) {
         return em.find(Book.class, id);
     }
