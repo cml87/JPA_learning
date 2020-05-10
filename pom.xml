@@ -57,6 +57,11 @@
 
   <dependencies>
 
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>javax.persistence-api</artifactId>
+      <version>2.2</version>
+    </dependency>
 
 
     <dependency>
@@ -65,11 +70,12 @@
       <version>2.7.6</version>
     </dependency>
 
-    <!--       <dependency>
-                <groupId>org.eclipse.persistence</groupId>
-                <artifactId>org.eclipse.persistence.jpa</artifactId>
-                <version>${version.eclipselink}</version>
-            </dependency>-->
+<!--    another JPA vendor-->
+<!--    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.2.10.Final</version>
+    </dependency>-->
 
     <dependency>
       <groupId>com.h2database</groupId>
