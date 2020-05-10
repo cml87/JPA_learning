@@ -3,12 +3,14 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-    <persistence-unit name="persistence-unit-dev" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="persistence-unit-prod" transaction-type="RESOURCE_LOCAL">
 
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
         <class>com.pluralsight.persistence.jpa.Book</class>
         <class>com.pluralsight.persistence.jpa.Author</class>
+        <class>com.pluralsight.persistence.jpa.CD</class>
+
 
         <properties>
 
@@ -16,9 +18,9 @@
             <!--   javax.persistence (JPA standard)     -->
             <!--________________________________________-->
 
-            <!-- This drop and creates the tables each time we start the program. Commnet if we wanna work
+            <!-- This drop and creates the tables each time we start the program. Comment if we wanna work
              with an existing table -->
-<!--            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 
             <!--If the property javax.persistence.schema-generation.scripts.action is specified then
             the corresponding files for the create and drop ddl scripts need to be specified following-->
@@ -39,9 +41,6 @@
             <!--________________________________________-->
             <property name="eclipselink.logging.level" value="INFO"/>
 
-
-
-
             <!--<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />-->
             <!--<property name="javax.persistence.jdbc.url"
                       value="jdbc:derby:/home/vogella/databases/simpleDb;create=true" /> -->
@@ -61,34 +60,35 @@
     </persistence-unit>
 
 
+    <persistence-unit name="persistence-unit-test" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <!-- Notice the specification of the mapping file. It will override any annotation present in the dealt
+         with entity specified in the mapping file -->
+        <mapping-file>META-INF/cd_mapping.xml</mapping-file>
 
+        <class>com.pluralsight.persistence.jpa.Book</class>
+        <class>com.pluralsight.persistence.jpa.Author</class>
+        <class>com.pluralsight.persistence.jpa.CD</class>
 
-    <persistence-unit name="another persistance unit">
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 
+            <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.scripts.create-target" value="module03-create.ddl"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="module03-drop.ddl"/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:module03-db"/> -->
+            <!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/module03-db"/> -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/cdbookstoreDB"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
+        </properties>
     </persistence-unit>
 </persistence>
 
 
 
 <!--
-<persistence-unit name="module03-persistence-unit-test" transaction-type="RESOURCE_LOCAL">
-<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-<mapping-file>META-INF/cd_mapping.xml</mapping-file>
-<class>com.pluralsight.persistence.module03.Book</class>
-<class>com.pluralsight.persistence.module03.Author</class>
-<class>com.pluralsight.persistence.module03.CD</class>
-<properties>
-    <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-    <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
-    <property name="javax.persistence.schema-generation.scripts.create-target" value="module03-create.ddl"/>
-    <property name="javax.persistence.schema-generation.scripts.drop-target" value="module03-drop.ddl"/>
-    <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-    &lt;!&ndash;<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:module03-db"/>&ndash;&gt;
-    &lt;!&ndash;<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/module03-db"/>&ndash;&gt;
-    <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/module03-db"/>
-    <property name="eclipselink.logging.level" value="INFO"/>
-</properties>
-</persistence-unit>
+
 -->
 
 

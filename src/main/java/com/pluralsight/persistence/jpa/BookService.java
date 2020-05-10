@@ -18,7 +18,7 @@ public class BookService {
     // =             Attributes             =
     // ======================================
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-unit-dev");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-unit-prod");
     private EntityManager em = emf.createEntityManager();
     private EntityTransaction tx = em.getTransaction();
 

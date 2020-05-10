@@ -31,7 +31,7 @@ public class AuthorCheck {
 
         System.out.println("\n\n>>> Executing : " + Main.class.toString() + " <<<\n");
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-unit-dev");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence-unit-prod");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 

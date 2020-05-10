@@ -18,6 +18,8 @@ public class Main {
 
         /** See 'Check' classes where I check that entities Book and Author are managed as desired*/
 
+        /** Check classes are intended to execute whole blocks of code independently. Otherwise I
+         * would have to stuff all blocks in a common main() */
 
     }
 }

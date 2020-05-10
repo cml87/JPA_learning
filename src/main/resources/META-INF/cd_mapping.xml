@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd"
+                 version="2.2">
+
+    <entity class="com.pluralsight.persistence.jpa.CD">  <!-- These mapping rules will apply to this entity -->
+        <table name="T_CD"/>  <!-- The table toward which we will do the mapping -->
+        <attributes>
+            <basic name="title">
+                <column nullable="false"/>
+            </basic>
+            <basic name="description">
+                <column length="5000"/>
+            </basic>
+            <basic name="totalDuration">
+                <column name="duration"/>
+            </basic>
+        </attributes>
+    </entity>
+
+</entity-mappings>
